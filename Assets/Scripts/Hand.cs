@@ -24,12 +24,35 @@ public class Hand : MonoBehaviour
 
     bool m_isCurrentlyTracked = false;
 
-    List<MeshRenderer> m_currentRenderers = new List<MeshRenderer>();
+    List<Renderer> m_currentRenderers = new List<Renderer>();
 
     // an array to store all colliders so that we can use this script to enable or disable them
     Collider[] m_colliders = null;
 
-    public bool isCollisionEnabled { get; private set; } = false;
+    public bool isCollisionEnabled { get; private set; } = true;
+
+    // need an interactor with HandControl script
+    public XRBaseInteractor interactor = null;
+
+    private void Awake()
+    {
+        if (interactor == null)
+        {
+            interactor = GetComponentInParent<XRBaseInteractor>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        interactor.onSelectEntered.AddListener(OnGrab);
+        interactor.onSelectExited.AddListener(OnRelease);
+    }
+
+    private void OnDisable()
+    {
+        interactor.onSelectEntered.RemoveListener(OnGrab);
+        interactor.onSelectExited.RemoveListener(OnRelease);
+    }
 
 
     // Start is called before the first frame update
@@ -66,8 +89,8 @@ public class Hand : MonoBehaviour
 
     public void Show()
     {
-        // currentRenderers got all the meshrenderers added to it in Hide() below!
-        foreach (MeshRenderer renderer in m_currentRenderers)
+        // currentRenderers got all the skin/meshrenderers added to it in Hide() below!
+        foreach (Renderer renderer in m_currentRenderers)
         {
             renderer.enabled = true;                       
         }
@@ -78,9 +101,9 @@ public class Hand : MonoBehaviour
     {
         m_currentRenderers.Clear();
 
-        // get all the possible meshrenderers in the children and go through each of them
-        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer renderer in renderers)
+        // get all the possible skin/meshrenderers in the children and go through each of them
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers)
         {
             renderer.enabled = false;
 
@@ -101,4 +124,29 @@ public class Hand : MonoBehaviour
             collider.enabled = isCollisionEnabled;
         }
     }
+
+    void OnGrab(XRBaseInteractable grabbedObject)
+    {
+        HandControl ctrl = grabbedObject.GetComponent<HandControl>();
+        if (ctrl != null)
+        {
+            if (ctrl.hideHand)
+            {
+                Hide();
+            }
+        }
+    }
+
+    void OnRelease(XRBaseInteractable releasedObject)
+    {
+        HandControl ctrl = releasedObject.GetComponent<HandControl>();
+        if (ctrl != null)
+        {
+            if (ctrl.hideHand)
+            {
+                Show();
+            }
+        }
+    }
+    
 }

@@ -834,6 +834,7 @@ MonoBehaviour:
       m_Action: Tracked
       m_Flags: 0
     m_Flags: 0
+  interactor: {fileID: 0}
 --- !u!1 &452359186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1591,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b0ee646218dcb1448853fc54936bbf78, type: 2}
     - target: {fileID: 919132149155446097, guid: 3d679c56162e1fa41a6ecf73cb773d82, type: 3}
       propertyPath: m_Name
-      value: utah_teapot2
+      value: utah_teapot
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 3d679c56162e1fa41a6ecf73cb773d82, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1781,6 +1782,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &707938963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707938958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a377b881dd2aa3e42b072bd8d8aaa391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideHand: 0
 --- !u!850595691 &709377823
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2986,7 +3000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387495333}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.417, y: 0.944, z: 0}
+  m_LocalPosition: {x: 2.824, y: 0.944, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3651,6 +3665,7 @@ MonoBehaviour:
       m_Action: Tracked
       m_Flags: 0
     m_Flags: 0
+  interactor: {fileID: 0}
 --- !u!1 &1683034419
 GameObject:
   m_ObjectHideFlags: 0
