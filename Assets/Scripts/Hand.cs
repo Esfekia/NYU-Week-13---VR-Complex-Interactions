@@ -25,10 +25,19 @@ public class Hand : MonoBehaviour
     bool m_isCurrentlyTracked = false;
 
     List<MeshRenderer> m_currentRenderers = new List<MeshRenderer>();
-    
+
+    // an array to store all colliders so that we can use this script to enable or disable them
+    Collider[] m_colliders = null;
+
+    public bool isCollisionEnabled { get; private set; } = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //grab all colliders, look thru all children. however use a lambda function to filter the results for triggers
+        m_colliders = GetComponentsInChildren<Collider>().Where(childCollider => !childCollider.isTrigger).ToArray();
+        
         // need to enable it before it can be used. It will give us a float
         trackedAction.Enable();
 
@@ -63,6 +72,7 @@ public class Hand : MonoBehaviour
             renderer.enabled = true;                       
         }
         isHidden = false;
+        EnableCollisions(true);
     }
     public void Hide()
     {
@@ -78,5 +88,17 @@ public class Hand : MonoBehaviour
             m_currentRenderers.Add(renderer);
         }
         isHidden = true;
+        EnableCollisions(false);
+    }
+
+    public void EnableCollisions(bool enabled)
+    {
+        if (isCollisionEnabled == enabled) return;
+        
+        isCollisionEnabled = enabled;
+        foreach(Collider collider in m_colliders)
+        {
+            collider.enabled = isCollisionEnabled;
+        }
     }
 }
