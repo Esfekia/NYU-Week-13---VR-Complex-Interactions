@@ -29,7 +29,7 @@ public class Hand : MonoBehaviour
     // an array to store all colliders so that we can use this script to enable or disable them
     Collider[] m_colliders = null;
 
-    public bool isCollisionEnabled { get; private set; } = true;
+    public bool isCollisionEnabled { get; private set; } = false;
 
     // need an interactor with HandControl script
     public XRBaseInteractor interactor = null;
@@ -44,14 +44,14 @@ public class Hand : MonoBehaviour
 
     private void OnEnable()
     {
-        interactor.onSelectEntered.AddListener(OnGrab);
-        interactor.onSelectExited.AddListener(OnRelease);
+        interactor.selectEntered.AddListener(OnGrab);
+        interactor.selectExited.AddListener(OnRelease);
     }
 
     private void OnDisable()
     {
-        interactor.onSelectEntered.RemoveListener(OnGrab);
-        interactor.onSelectExited.RemoveListener(OnRelease);
+        interactor.selectEntered.RemoveListener(OnGrab);
+        interactor.selectExited.RemoveListener(OnRelease);
     }
 
 
@@ -125,9 +125,9 @@ public class Hand : MonoBehaviour
         }
     }
 
-    void OnGrab(XRBaseInteractable grabbedObject)
+    void OnGrab(SelectEnterEventArgs grabbedObject)
     {
-        HandControl ctrl = grabbedObject.GetComponent<HandControl>();
+        HandControl ctrl = grabbedObject.interactableObject.transform.gameObject.GetComponent<HandControl>();
         if (ctrl != null)
         {
             if (ctrl.hideHand)
@@ -137,9 +137,9 @@ public class Hand : MonoBehaviour
         }
     }
 
-    void OnRelease(XRBaseInteractable releasedObject)
+    void OnRelease(SelectExitEventArgs releasedObject)
     {
-        HandControl ctrl = releasedObject.GetComponent<HandControl>();
+        HandControl ctrl = releasedObject.interactableObject.transform.gameObject.GetComponent<HandControl>();
         if (ctrl != null)
         {
             if (ctrl.hideHand)
