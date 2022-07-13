@@ -22,6 +22,14 @@ public class Hand : MonoBehaviour
     // we want to get updated when this device's action updates so we create a binding to look into this input
     public InputAction trackedAction = null;
 
+    // find out if the grip button is held or not
+
+    public InputAction gripAction = null;
+
+    public Animator handAnimator = null;
+
+    private int m_gripAmountParameter = 0;
+
     bool m_isCurrentlyTracked = false;
 
     List<Renderer> m_currentRenderers = new List<Renderer>();
@@ -64,8 +72,19 @@ public class Hand : MonoBehaviour
         // need to enable it before it can be used. It will give us a float
         trackedAction.Enable();
 
+        m_gripAmountParameter = Animator.StringToHash("GripAmount");
+
+        gripAction.Enable();
+
         // this will hide the hand in the beginning and the function will populate our m_currentRenderers for use in Show()
         Hide();
+    }
+
+    void UpdateAnimations()
+    {
+        // get the grip amount from the gripAction binding
+        float gripAmount = gripAction.ReadValue<float>();
+        handAnimator.SetFloat(m_gripAmountParameter, gripAmount);
     }
 
     // Update is called once per frame
@@ -85,6 +104,7 @@ public class Hand : MonoBehaviour
             m_isCurrentlyTracked = false;
             Hide();
         }
+        UpdateAnimations();
     }
 
     public void Show()
