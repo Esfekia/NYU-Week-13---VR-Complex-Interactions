@@ -87,24 +87,24 @@ public class DragInteractable : XRBaseInteractable
     }
     
     // when an interactor interacts with this draggable object, we can just tie into the event right here:
-    protected override void OnSelectEntered(XRBaseInteractor interactor)
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         // first catch our interactor
-        m_interactor = interactor;
+        m_interactor = args.interactorObject as XRBaseInteractor;
 
         // then start dragging
         StartDrag();
-        base.OnSelectEntered(interactor);
+        base.OnSelectEntered(args);
     
     }
 
     // and do the same thing when select is exited / handle is let go.
-    protected override void OnSelectExited(XRBaseInteractor interactor)
+    protected override void OnSelectExited(SelectExitEventArgs args)
     {
         EndDrag();
         // clear out the interactor once the interaction is over
         m_interactor = null;
 
-        base.OnSelectExited(interactor);
+        base.OnSelectExited(args);
     }
 }
