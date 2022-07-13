@@ -923,6 +923,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: r_hand_skeletal_lowres
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 02a0aec7adb3aa04f956820bf0240ea3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7d119c17bb3e6ed4b9d8c667af5ff508, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a0aec7adb3aa04f956820bf0240ea3, type: 3}
 --- !u!4 &334553101 stripped
@@ -2609,6 +2613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: l_hand_skeletal_lowres
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4dc5c89721b006c4e96285cc1dae57ea, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1874ad0e8d8858e4d868374b74e5f3df, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dc5c89721b006c4e96285cc1dae57ea, type: 3}
 --- !u!4 &952640186 stripped
