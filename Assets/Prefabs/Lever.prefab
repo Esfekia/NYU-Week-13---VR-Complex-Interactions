@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6766661678256128350}
+  - component: {fileID: 2508978340066574127}
   m_Layer: 0
   m_Name: Lever Offset
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 6188770692215710570}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+--- !u!114 &2508978340066574127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238756343440161754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56158165cff7fe4d8b3de0d0fabb5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOrientation: {fileID: 5086907500323232563}
+  endOrientation: {fileID: 2536920128506623228}
 --- !u!1 &988557152714227708
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +350,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 15
+  m_VersionIndex: 18
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -431,6 +446,7 @@ GameObject:
   - component: {fileID: 6188770691972770136}
   - component: {fileID: 6188770691972770137}
   - component: {fileID: 9132631745377168497}
+  - component: {fileID: 5678051682431801586}
   m_Layer: 0
   m_Name: LeverHandle
   m_TagString: Untagged
@@ -4599,7 +4615,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 20
+  m_VersionIndex: 23
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4698,6 +4714,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.0028
   m_Center: {x: 0, y: 0.01, z: -0.00000047683716}
+--- !u!54 &5678051682431801586
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188770691972770139}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6188770692215710571
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,6 +4740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6188770692215710570}
   - component: {fileID: 6828511425353074292}
+  - component: {fileID: 504385339187802988}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -4817,13 +4850,62 @@ MonoBehaviour:
   dragPercent: 0
   onDragStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2508978340066574127}
+        m_TargetAssemblyTypeName: Lever, Assembly-CSharp
+        m_MethodName: OnLeverPullStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDragEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2508978340066574127}
+        m_TargetAssemblyTypeName: Lever, Assembly-CSharp
+        m_MethodName: onLeverPullStop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDragUpdate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2508978340066574127}
+        m_TargetAssemblyTypeName: Lever, Assembly-CSharp
+        m_MethodName: UpdateLever
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &504385339187802988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188770692215710571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a377b881dd2aa3e42b072bd8d8aaa391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hideHand: 1
 --- !u!1 &7535928578903521110
 GameObject:
   m_ObjectHideFlags: 0
