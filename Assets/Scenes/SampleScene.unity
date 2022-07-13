@@ -1176,7 +1176,25 @@ MonoBehaviour:
       m_Action: Tracked
       m_Flags: 0
     m_Flags: 0
-  interactor: {fileID: 0}
+  gripAction:
+    m_Name: Grip
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a58ef5d4-c651-47c6-89af-5bdd33233b34
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 63ed4b83-c0d5-4a7c-9761-b4b0aecb4453
+      m_Path: <XRController>{LeftHand}/grip
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grip
+      m_Flags: 0
+    m_Flags: 0
+  handAnimator: {fileID: 1149057887}
+  interactor: {fileID: 1908052178}
 --- !u!1 &452359186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db6402f56c1dac942ad8ef333caabf6a, type: 3}
+--- !u!95 &1149057887 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4dc5c89721b006c4e96285cc1dae57ea, type: 3}
+  m_PrefabInstance: {fileID: 952640185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1203195548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6682861210513475885, guid: 4dc5c89721b006c4e96285cc1dae57ea, type: 3}
@@ -4671,7 +4694,25 @@ MonoBehaviour:
       m_Action: Tracked
       m_Flags: 0
     m_Flags: 0
-  interactor: {fileID: 0}
+  gripAction:
+    m_Name: Grip
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 96cac866-4b37-4db0-bfa5-d8c5122ac3ce
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c801c38a-bb5b-448c-b917-a1f472bdfad8
+      m_Path: <XRController>{RightHand}/grip
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grip
+      m_Flags: 0
+    m_Flags: 0
+  handAnimator: {fileID: 1695679619}
+  interactor: {fileID: 1784304025}
 --- !u!1 &1683034419
 GameObject:
   m_ObjectHideFlags: 0
@@ -4882,6 +4923,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!95 &1695679619 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 02a0aec7adb3aa04f956820bf0240ea3, type: 3}
+  m_PrefabInstance: {fileID: 334553100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1705231563
 GameObject:
   m_ObjectHideFlags: 0
