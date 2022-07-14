@@ -86,17 +86,18 @@ public class Hand : MonoBehaviour
 
     void UpdateAnimations()
     {
-        // get the grip amount from the gripAction binding
-        float gripAmount = gripAction.ReadValue<float>();
-        handAnimator.SetFloat(m_gripAmountParameter, gripAmount);
 
         // get the point amount from the pointAction binding
         float pointAmount = triggerAction.ReadValue<float>();
-        
+        handAnimator.SetFloat(m_pointAmountParameter, pointAmount);
+
+        // get the grip amount from the gripAction binding
+        float gripAmount = gripAction.ReadValue<float>();
+
         // if the trigger is the only thing down we still are going to use the grip animation
         // if the point amount is zero, we are still just using the grip amount alone
         // if the point amount is one, it gets grip amount added but clamped to 1 
-        handAnimator.SetFloat(m_pointAmountParameter, Mathf.Clamp01(gripAmount + pointAmount));
+        handAnimator.SetFloat(m_gripAmountParameter, Mathf.Clamp01(gripAmount + pointAmount));
     }
 
     // Update is called once per frame
