@@ -1193,6 +1193,15 @@ MonoBehaviour:
       m_Action: Grip
       m_Flags: 0
     m_Flags: 0
+  triggerAction:
+    m_Name: Trigger
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2909c993-61b9-4c49-b957-fe6490dd57b5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   handAnimator: {fileID: 1149057887}
   interactor: {fileID: 1908052178}
 --- !u!1 &452359186
@@ -1376,6 +1385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 504385339187802988, guid: db6402f56c1dac942ad8ef333caabf6a, type: 3}
+      propertyPath: hideHand
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6188770691731328934, guid: db6402f56c1dac942ad8ef333caabf6a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4711,6 +4724,15 @@ MonoBehaviour:
       m_Action: Grip
       m_Flags: 0
     m_Flags: 0
+  triggerAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   handAnimator: {fileID: 1695679619}
   interactor: {fileID: 1784304025}
 --- !u!1 &1683034419
@@ -6378,6 +6400,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1692281876}
+    - target: {fileID: 7443584969059566291, guid: 2a0ceaa63ba217d42ae6dacf9b725277, type: 3}
+      propertyPath: hideHand
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a0ceaa63ba217d42ae6dacf9b725277, type: 3}
 --- !u!1 &2105081732

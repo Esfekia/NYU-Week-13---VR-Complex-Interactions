@@ -25,10 +25,12 @@ public class Hand : MonoBehaviour
     // find out if the grip button is held or not
 
     public InputAction gripAction = null;
+    public InputAction triggerAction = null;
 
     public Animator handAnimator = null;
 
     private int m_gripAmountParameter = 0;
+    private int m_pointAmountParameter = 0;
 
     bool m_isCurrentlyTracked = false;
 
@@ -73,8 +75,10 @@ public class Hand : MonoBehaviour
         trackedAction.Enable();
 
         m_gripAmountParameter = Animator.StringToHash("GripAmount");
-
+        m_pointAmountParameter = Animator.StringToHash("PointAmount");
         gripAction.Enable();
+
+        triggerAction.Enable();
 
         // this will hide the hand in the beginning and the function will populate our m_currentRenderers for use in Show()
         Hide();
@@ -85,6 +89,14 @@ public class Hand : MonoBehaviour
         // get the grip amount from the gripAction binding
         float gripAmount = gripAction.ReadValue<float>();
         handAnimator.SetFloat(m_gripAmountParameter, gripAmount);
+
+        // get the point amount from the pointAction binding
+        float pointAmount = triggerAction.ReadValue<float>();
+        
+        // if the trigger is the only thing down we still are going to use the grip animation
+        // if the point amount is zero, we are still just using the grip amount alone
+        // if the point amount is one, it gets grip amount added but clamped to 1 
+        handAnimator.SetFloat(m_pointAmountParameter, Mathf.Clamp01(gripAmount + pointAmount));
     }
 
     // Update is called once per frame
