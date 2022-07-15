@@ -88,7 +88,7 @@ public class TurnInteractable : XRBaseInteractable
         m_interactor = args.interactorObject as XRBaseInteractor;
 
         // then start dragging
-        StartTurn()
+        StartTurn();
         base.OnSelectEntered(args);
 
     }
@@ -96,7 +96,7 @@ public class TurnInteractable : XRBaseInteractable
     // and do the same thing when select is exited / handle is let go.
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        StopTurn()
+        StopTurn();
         // clear out the interactor once the interaction is over
         m_interactor = null;
 
