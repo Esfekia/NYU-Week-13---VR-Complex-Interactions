@@ -71,7 +71,7 @@ public class TurnInteractable : XRBaseInteractable
             Quaternion localRotation = GetLocalRotation(m_interactor.transform.rotation);
 
             // the angle that is happening now
-            turnAngle = m_startingRotation.z - localRotation.eulerAngles.z;
+            turnAngle = m_startingRotation.y - localRotation.eulerAngles.y;
 
             // as we update, lets invoke onTurnUpdate, passing the turn angle.
             onTurnUpdate?.Invoke(turnAngle);

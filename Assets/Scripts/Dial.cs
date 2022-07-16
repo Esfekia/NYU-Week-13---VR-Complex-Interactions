@@ -28,7 +28,7 @@ public class Dial : MonoBehaviour
         Vector3 angles = m_startRotation;
 
         // add the incoming angle to its z-axis
-        angles.z += angle;
+        angles.y += angle;
 
         // set that back to our local euler angles directly
         transform.localEulerAngles = angles;
