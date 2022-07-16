@@ -6,6 +6,7 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioClip[] clips;
     private AudioSource audioSource;
+    private int clipNo = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -13,13 +14,20 @@ public class MusicPlayer : MonoBehaviour
         audioSource = FindObjectOfType<AudioSource>();
     }
 
-    private AudioClip GetRandomClip()
+    private AudioClip GetNextClip()
     {
-        return clips[Random.Range(0, clips.Length)];
+        
+        clipNo++;
+        if (clipNo == clips.Length)
+        {
+            clipNo = 0;
+        }
+        return clips[clipNo];
+
     }
-    public void PlayRandomClip()
+    public void PlayNextClip()
     {
-        audioSource.clip = GetRandomClip();
+        audioSource.clip = GetNextClip();
         audioSource.Play();
     }
 }
