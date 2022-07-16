@@ -30,4 +30,9 @@ public class MusicPlayer : MonoBehaviour
         audioSource.clip = GetNextClip();
         audioSource.Play();
     }
+
+    public void StopPlaying()
+    {
+        audioSource.Stop();
+    }
 }
