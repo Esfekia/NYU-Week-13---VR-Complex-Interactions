@@ -23,10 +23,12 @@ public class Lever_Fire : MonoBehaviour
         if (isFireOn)
         {
             fireEffects.SetActive(false);
+            isFireOn = false;
         }
         else
         {
             fireEffects.SetActive(true);
+            isFireOn = true;
         }
 
 
